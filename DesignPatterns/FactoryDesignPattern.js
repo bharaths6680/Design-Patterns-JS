@@ -2,6 +2,9 @@
     Factory Design Pattern -> https://www.youtube.com/watch?v=kuirGzhGhyw
     Author: DevSage (Youtube) -> https://www.youtube.com/DevSage
 */
+/* Factory design [attern is nothing but access the ccommon properties and with some additional info based on some unique keys to create a new objects */
+
+/* The factory pattern is a creational design pattern that uses factory methods to create objects — rather than by calling a constructor. */
 
 function Developer(name)
 {
