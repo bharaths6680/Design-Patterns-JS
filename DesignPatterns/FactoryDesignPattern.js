@@ -48,3 +48,47 @@ employees.push(employeeFactory.create("Tim", 2))
 employees.forEach( emp => {
   say.call(emp)
 })
+
+/* ANother example */
+
+// createuser acts as factory class
+const createUser = (role, additionalInfo) => {
+  // common properties
+  const user = {
+    name: additionalInfo.name,
+    pwd: additionalInfo.password, // 'pwd' is derived from 'password'
+  };
+
+  // get additional info based on the role
+  const additionInfoObj = {
+    admin: () => ({ role: "Admin", key: additionalInfo.key }),
+    customer: () => ({ role: "Customer", address: additionalInfo.address }),
+    seller: () => ({
+      role: "Seller",
+      shopAddress: additionalInfo.shopAddress,
+      contact_No: additionalInfo.contact_No,
+    }),
+  };
+
+  // find the right role and get specific addition info
+  let specificInfo = null;
+  if (additionInfoObj[role] !== undefined) {
+    specificInfo = additionInfoObj[role]();
+  }
+
+  if (!specificInfo) {
+    return;
+  }
+
+  return { ...user, ...specificInfo };
+};
+
+// Create an admin user
+const admin = createUser("admin", {
+  name: "Abhishek",
+  password: "Abhi1233",
+  key: "#1244534-fadsv34",
+});
+console.log(admin);
+```
+
